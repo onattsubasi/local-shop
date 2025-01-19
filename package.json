@@ -1,0 +1,16 @@
+{
+   "name": "local-shop",
+   "private": true,
+   "workspaces": [
+     "basket-service",
+     "campaign-service",
+     "category-service",
+     "checkout-service",
+     "order-service",
+     "payment-service",
+     "product-service",
+     "usage-follower-service",
+     "user-service"
+   ],
+   "dependencies": {}
+ }
