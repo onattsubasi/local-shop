@@ -47,7 +47,10 @@ Each service has its own README.md file with detailed instructions on how to set
 Each service requires specific environment variables to be set. Please refer to the `.env` files in each service directory for the required variables.
 
 ## Running the Services
-
+Firstly, in the root directory, use the following command:
+```sh
+yarn install
+```
 To run a service, navigate to its directory and use the following commands:
 
 ```sh
