@@ -51,5 +51,10 @@ Each service requires specific environment variables to be set. Please refer to 
 To run a service, navigate to its directory and use the following commands:
 
 ```sh
+yarn start
+or
 npm install
 npm start
+```
+
+Ensure that you have set the required environment variables before running the services.
