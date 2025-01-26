@@ -14,7 +14,7 @@ const updateProduct = async (req, res, next) => {
     }
     const categoryId = req.body.category.categoryId;
     const categoryResponse = await Axios.get(
-      `http://localhost:3002/api/categories/getCategory/${categoryId}`
+      `http://localhost:${process.env.CATEGORY_SERVICE_PORT}/api/categories/getCategory/${categoryId}`
     );
     const gainedCategory = categoryResponse.data;
 

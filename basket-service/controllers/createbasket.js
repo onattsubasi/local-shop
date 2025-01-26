@@ -10,7 +10,7 @@ exports.createBasket = async (req, res, next) => {
     const productId = req.params.productId;
     const quantity = parseInt(req.query.quantity);
     const productResponse = await Axios.get(
-      `http://localhost:8001/api/product/getProduct/${productId}`
+      `http://localhost:${process.env.PRODUCT_SERVICE_PORT}/api/product/getProduct/${productId}`
     );
     const gainedProduct = productResponse.data;
     gainedProduct.quantity =

@@ -8,7 +8,7 @@ const doApplyCoupon = async (coupon, user, token) => {
       usageAmount: 1,
     };
     const response = await axios.post(
-      "http://localhost:8056/api/usageFollower/check-availability",
+      `http://localhost:${process.env.USAGE_FOLLOWER_SERVICE_PORT}/api/usageFollower/check-availability`,
       request,
       {
         headers: { cookie: `token=${token}` },

@@ -14,7 +14,7 @@ app.use("/api/user", userRoute);
 start = async () => {
   await dbConnection();
   await app.listen(process.env.USER_SERVICE_PORT, () => {
-    console.log(`Connected ${process.env.USER_SERVICE_PORT}`);
+    console.log("Welcome to user service " + process.env.USER_SERVICE_PORT);
   });
   await connectToKafka();
   try {

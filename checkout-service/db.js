@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const dbConnection = async () =>{
     mongoose.connect(process.env.MONGO_URI,{
-        dbName:"checkoutService",
+        dbName:"checkout-service",
     })
     .then(()=>{
         console.log('Connection to DB succesful');

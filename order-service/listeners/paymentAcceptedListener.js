@@ -23,7 +23,7 @@ const paymentAcceptedListener = () => {
             console.log({ paymentId });
 
             const paymentResponse = await Axios.get(
-              `http://localhost:3009/api/payment/find/${paymentId}`
+              `http://localhost:${process.env.PAYMENT_SERVICE_PORT}/api/payment/find/${paymentId}`
             );
             const gainedPayment = paymentResponse.data;
 
@@ -31,7 +31,7 @@ const paymentAcceptedListener = () => {
               throw new Error(`Product with ID ${paymentId} does not exist`);
             }
 
-            const order = await new Order({
+            const order = await Order.create({
               userId: gainedPayment.userId,
               checkoutId: gainedPayment.checkoutId,
               basketId: gainedPayment.basketId,
@@ -76,7 +76,7 @@ const paymentAcceptedListener = () => {
       });
     } catch (error) {
       console.error("Error:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

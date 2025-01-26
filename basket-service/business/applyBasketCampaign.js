@@ -248,6 +248,7 @@ const basketTotalPriceCampaignsHelper = async (
 ) => {
   try {
     let discount = campaign.discount
+    let discountAmount = 0;
     let usageAmount = 0;
 
     usageAmount =
@@ -284,7 +285,7 @@ const checkAvailability = async (campaignId, userId, usageAmount) => {
     request.userId = userId;
     request.usageAmount = usageAmount;
     let response = await axios.post(
-      "http://localhost:8056/api/usageFollower/check-availability",
+      `http://localhost:${process.env.USAGE_FOLLOWER_SERVICE_PORT}/api/usageFollower/check-availability`,
       request
     );
     return response.data;

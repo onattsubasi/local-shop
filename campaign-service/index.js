@@ -20,6 +20,7 @@ app.use("/api/coupon", couponRoutes);
 start = async () => {
   await dbConnection();
   app.listen(process.env.CAMPAIGN_SERVICE_PORT);
+  console.log("Welcome to campaign service " + process.env.CAMPAIGN_SERVICE_PORT);
   await connectToKafka();
   try {
     await Promise.all([

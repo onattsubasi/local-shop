@@ -32,12 +32,12 @@ app.get("*", (req, res) => {
 });
 
 start = async () => {
-    await dbConnection();
-    app.listen(process.env.CHECKOUT_SERVICE_PORT);
-    console.log(`Listening from port ${process.env.CHECKOUT_SERVICE_PORT}`);
-    await connectToKafka();
-	try {  
-	await Promise.all([checkoutIsActiveOrderListener()]);
+  await dbConnection();
+  app.listen(process.env.CHECKOUT_SERVICE_PORT);
+  console.log("Welcome to checkout service " + process.env.CHECKOUT_SERVICE_PORT);
+  await connectToKafka();
+  try {
+    await Promise.all([checkoutIsActiveOrderListener()]);
   } catch (error) {
     console.error("Error:", error);
   }

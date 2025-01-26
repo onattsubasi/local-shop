@@ -15,8 +15,8 @@ app.use("/api/order", orderRoute);
 
 start = async () => {
   await dbConnection();
-  await app.listen(process.env.PORT, () => {
-    console.log(`Connected ${process.env.PORT}`);
+  await app.listen(process.env.ORDER_SERVICE_PORT, () => {
+    console.log("Welcome to order service " + process.env.ORDER_SERVICE_PORT);
   });
 
   await connectToKafka();

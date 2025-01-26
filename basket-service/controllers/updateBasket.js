@@ -22,7 +22,7 @@ exports.updateBasket = async (req, res, next) => {
         );
       }
       const productResponse = await Axios.get(
-        `http://localhost:8001/api/product/getProduct/${productId}`
+        `http://localhost:${process.env.PRODUCT_SERVICE_PORT}/api/product/getProduct/${productId}`
       );
       const gainedProduct = productResponse.data;
 

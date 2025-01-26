@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const dbConnection = () =>{
     mongoose.connect(process.env.MONGO_URI,{
-        dbName:"categoryService",
+        dbName:"category-service",
     })
     .then(()=>{
         console.log('Connection to DB succesful');

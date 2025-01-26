@@ -5,7 +5,7 @@ exports.applyCoupon = async (req, res, next) => {
     let token = req.cookies.token;
     const couponCode = req.body.couponCode;
     const couponResponse = await axios.get(
-      `http://localhost:8055/api/coupon/get-coupon/${couponCode}`,
+      `http://localhost:${process.env.CAMPAIGN_SERVICE_PORT}/api/coupon/get-coupon/${couponCode}`,
       {
         headers: { cookie: `token=${token}` },
       }

@@ -6,7 +6,7 @@ const createProduct = async (req, res, next) => {
   try {
     const productObj = {};
     const categoryId = req.params.categoryId;
-    const categoryResponse = await Axios.get(`http://localhost:3002/api/categories/getCategory/${categoryId}`);
+    const categoryResponse = await Axios.get(`http://localhost:${process.env.CATEGORY_SERVICE_PORT}/api/categories/getCategory/${categoryId}`);
     const gainedCategory = categoryResponse.data;
     
     if (!gainedCategory) {

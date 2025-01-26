@@ -8,7 +8,7 @@ exports.createCheckout = async (req, res, next) => {
     const checkObj = {};
     
     const basketId = req.params.basketId;
-    const basketResponse = await Axios.get(`http://localhost:8000/api/getBasket/${basketId}`);
+    const basketResponse = await Axios.get(`http://localhost:${process.env.BASKET_SERVICE_PORT}/api/getBasket/${basketId}`);
     const gainedBasket = basketResponse.data;
     
     if (!gainedBasket) {

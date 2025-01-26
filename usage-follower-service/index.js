@@ -21,6 +21,7 @@ app.use("/api/usageFollower", usageFollowerRoute);
 start = async () => {
   await dbConnection();
   app.listen(process.env.USAGE_FOLLOWER_SERVICE_PORT);
+  console.log("Welcome to usage follower service " + process.env.USAGE_FOLLOWER_SERVICE_PORT);
   await connectToKafka();
   try {
     await Promise.all([

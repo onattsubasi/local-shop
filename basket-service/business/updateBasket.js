@@ -11,7 +11,7 @@ const doUpdateBasket = async (basketId, basketObj) => {
         let basketPrice = 0;
         for (const product of basketObj.products) {
             const productId = product.productId;
-            const productResponse = await Axios.get(`http://localhost:8001/api/product/getProduct/${productId}`);
+            const productResponse = await Axios.get(`http://localhost:${process.env.PRODUCT_SERVICE_PORT}/api/product/getProduct/${productId}`);
             const foundProduct = productResponse.data;
             if (!foundProduct) {
                 throw new Error(`Product with ID ${productId} not found`);

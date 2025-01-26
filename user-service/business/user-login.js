@@ -12,9 +12,3 @@ const validPass = async (password, hashedPassword) => {
 };
 
 module.exports = { doLoginUser, validPass };
-
-// http://localhost:3000/api/user/signin
-/*
-"email":"test@gmail.com",
-"password":"12345"
-*/

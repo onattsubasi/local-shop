@@ -10,7 +10,7 @@ exports.payPayment = async (req, res) => {
 
   try {
     const checkoutResponse = await Axios.get(
-      `http://localhost:3003/api/checkouts/getCheckout/${checkoutId}`
+      `http://localhost:${process.env.CHECKOUT_SERVICE_PORT}/api/checkouts/getCheckout/${checkoutId}`
     );
     const gainedCheckout = checkoutResponse.data;
 

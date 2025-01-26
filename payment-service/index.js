@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const dbConnection = require('./db');
 require("dotenv").config({ path: "dev.env" });
-const { connectToKafka, sendMessageToKafka} = require('./kafka');
+const { connectToKafka} = require('./kafka');
 const paymentRoute = require('./routes/card');
 const cardRefundAllOrderListener = require('./listeners/cardRefundAllOrder');
 const cardRefundProductListener = require('./listeners/cardRefundProduct');
@@ -16,8 +16,8 @@ app.use('/api/payment',paymentRoute);
 
 start = async () => {
     await dbConnection();
-    await app.listen(process.env.PORT, () => {
-        console.log(`Connected ${process.env.PORT}`);
+    await app.listen(process.env.PAYMENT_SERVICE_PORT, () => {
+        console.log("Welcome to payment service " + process.env.PAYMENT_SERVICE_PORT);
     });
 
     await connectToKafka();
