@@ -1,5 +1,5 @@
 const { createConsumer } = require("../kafka");
-const doUpdateFollower = require("../business/updateFollower")
+const doUpdateFollower = require("../business/updateFollower");
 const campaignUpdatedListener = async () => {
   return new Promise(async (resolve, reject) => {
     let campaignUpdatedConsumer = null;
@@ -16,15 +16,13 @@ const campaignUpdatedListener = async () => {
         eachMessage: async ({ topic, partition, message }) => {
           try {
             const parsedMessage = JSON.parse(message.value);
-            let tempCamp = {}
-            let tempCampId = parsedMessage._id
-            tempCamp.maxLimitInBasket = parsedMessage.maxLimitInBasket
-            tempCamp.maxTotalLimit = parsedMessage.maxTotalLimit
-            tempCamp.maxLimitPerCustomer = parsedMessage.max
+            let tempCamp = {};
+            let tempCampId = parsedMessage._id;
+            tempCamp.maxLimitInBasket = parsedMessage.maxLimitInBasket;
+            tempCamp.maxTotalLimit = parsedMessage.maxTotalLimit;
+            tempCamp.maxLimitPerCustomer = parsedMessage.max;
 
-            await doUpdateFollower(//TODO
-              tempCampId,tempCamp
-            );
+            await doUpdateFollower(tempCampId, tempCamp);
             console.log("Campaign updated");
           } catch (error) {
             console.log(error);
@@ -33,7 +31,7 @@ const campaignUpdatedListener = async () => {
       });
     } catch (error) {
       console.error("Error in campaignUpdatedListener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

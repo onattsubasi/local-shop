@@ -17,9 +17,7 @@ const productCampaignUpdatedListener = async () => {
         eachMessage: async ({ topic, partition, message }) => {
           try {
             const parsedMessage = JSON.parse(message.value);
-            await updateProductCampaign(
-              parsedMessage
-            );
+            await updateProductCampaign(parsedMessage);
             console.log("Product campaign updated");
           } catch (error) {
             console.log(error);
@@ -28,7 +26,7 @@ const productCampaignUpdatedListener = async () => {
       });
     } catch (error) {
       console.error("Error in product Listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

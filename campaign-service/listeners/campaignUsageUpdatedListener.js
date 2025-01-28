@@ -32,7 +32,7 @@ const campaignUsageUpdatedListener = async () => {
       });
     } catch (error) {
       console.error("Error in campaign Listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

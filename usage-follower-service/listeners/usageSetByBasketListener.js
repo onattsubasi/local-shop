@@ -28,7 +28,7 @@ const usageSetByBasketListener = async () => {
       });
     } catch (error) {
       console.error("Error in usageFollower Listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

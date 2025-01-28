@@ -28,7 +28,7 @@ const basketCampaignCreatedListener = async () => {
       });
     } catch (error) {
       console.error("Error in basket Listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

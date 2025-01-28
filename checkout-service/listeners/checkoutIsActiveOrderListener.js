@@ -34,7 +34,7 @@ const checkoutIsActiveOrderListener = () => {
       });
     } catch (error) {
       console.error("Error in product quantity listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

@@ -33,7 +33,7 @@ const campaignCreatedListener = async () => {
       });
     } catch (error) {
       console.error("Error in campaignCreatedListener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

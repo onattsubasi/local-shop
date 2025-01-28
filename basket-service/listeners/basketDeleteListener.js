@@ -30,7 +30,7 @@ const basketClearListener = () => {
       });
     } catch (error) {
       console.error("Error in basket listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

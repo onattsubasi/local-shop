@@ -29,12 +29,7 @@ router.patch(
 );
 
 router.post(
-  "/get-availability/:campaignId",
-  getAvailability.getAvailability
-);
-
-router.post(
-  "/get-availability/:couponId",
+  "/get-availability/:id",
   getAvailability.getAvailability
 );
 

@@ -1,5 +1,5 @@
-const {createConsumer} = require("../kafka")
-const doAddCoupon = require("../business/user-addCoupon")
+const { createConsumer } = require("../kafka");
+const doAddCoupon = require("../business/user-addCoupon");
 const userCouponRedeemedListener = async () => {
   return new Promise(async (resolve, reject) => {
     let userCouponRedeemedConsumer = null;
@@ -16,9 +16,7 @@ const userCouponRedeemedListener = async () => {
         eachMessage: async ({ topic, partition, message }) => {
           try {
             const parsedMessage = JSON.parse(message.value);
-            await doAddCoupon(//TODO
-              parsedMessage
-            );
+            await doAddCoupon(parsedMessage);
             console.log("Coupon redeemed");
           } catch (error) {
             console.log(error);
@@ -27,7 +25,7 @@ const userCouponRedeemedListener = async () => {
       });
     } catch (error) {
       console.error("Error in userCouponRedeemedListener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

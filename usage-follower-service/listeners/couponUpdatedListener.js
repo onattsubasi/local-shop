@@ -1,12 +1,10 @@
 const { createConsumer } = require("../kafka");
-const doUpdateFollower = require("../business/updateFollower")
+const doUpdateFollower = require("../business/updateFollower");
 const couponUpdatedListener = async () => {
   return new Promise(async (resolve, reject) => {
     let couponUpdatedConsumer = null;
     try {
-      couponUpdatedConsumer = createConsumer(
-        "couponService-couponUpdated"
-      );
+      couponUpdatedConsumer = createConsumer("couponService-couponUpdated");
       await couponUpdatedConsumer.connect();
       await couponUpdatedConsumer.subscribe({
         topics: ["couponService-couponUpdated"],
@@ -16,9 +14,7 @@ const couponUpdatedListener = async () => {
         eachMessage: async ({ topic, partition, message }) => {
           try {
             const parsedMessage = JSON.parse(message.value);
-            await doUpdateFollower(//TODO
-              parsedMessage
-            );
+            await doUpdateFollower(parsedMessage);
             console.log("Coupon updated");
           } catch (error) {
             console.log(error);
@@ -27,7 +23,7 @@ const couponUpdatedListener = async () => {
       });
     } catch (error) {
       console.error("Error in couponUpdatedListener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

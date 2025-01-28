@@ -56,7 +56,7 @@ const cardRefundProductListener = () => {
       });
     } catch (error) {
       console.error("Error in listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };

@@ -10,7 +10,7 @@ const doCheckAvailability = async (
     query = couponId ? { couponId: couponId } : { campaignId: campaignId };
 
     let usageFollower = await UsageFollower.findOne(query);
-    let usageAmount = (await usageFollower?.userUsageCount?.get(userId)) ?? 0;
+    let usageAmount = (usageFollower?.userUsageCount?.get(userId)) ?? 0;
 
     if (usageFollower.maxLimitInBasket) {
       requestedUsage =
@@ -28,12 +28,8 @@ const doCheckAvailability = async (
         ? usableAmount
         : usageFollower.maxTotalLimit - usageFollower.totalUsageCount;
 
-    /*    //TODO: burası, sepet ödenip, siparişe dönüştüğünde olmalı => sepetteki ürün ve dundan dolayı kampanya kullanım değişiklikleri etki etmemeli!
-=> checkout'a geçince yapılabilir?
-*/
     let userUsage = usableAmount;
-    await usageFollower.tempUsageCount?.set(userId, userUsage);
-    //usageFollower.totalUsageCount += usableAmount;
+    usageFollower.tempUsageCount?.set(userId, userUsage);
 
     await usageFollower.save();
     return usableAmount;

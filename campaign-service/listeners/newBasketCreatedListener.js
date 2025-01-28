@@ -28,7 +28,7 @@ const newBasketCreatedListener = async () => {
       });
     } catch (error) {
       console.error("Error happened on basket created listener:", error);
-      reject(error);
+      reject(new Error(error));
     }
   });
 };
